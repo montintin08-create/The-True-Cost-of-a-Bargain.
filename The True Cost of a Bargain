@@ -1,0 +1,289 @@
+import React, { useState } from 'react';
+import { Leaf, Droplets, Trash2, Wind, ShoppingBag, Globe, Recycle, CheckCircle2, ChevronRight, ChevronLeft, Menu, X } from 'lucide-react';
+
+const App = () => {
+  const [activeTab, setActiveTab] = useState('problem');
+
+  // Content for the comparison table
+  const comparisonData = [
+    { 
+      feature: "Production Speed", 
+      fast: "Thousands of styles launched weekly.", 
+      slow: "Limited, curated seasonal collections.",
+      icon: <Wind className="w-5 h-5" />
+    },
+    { 
+      feature: "Worker Welfare", 
+      fast: "Often linked to poor wages and unsafe conditions.", 
+      slow: "Fair Trade certified, living wages, safe environments.",
+      icon: <Globe className="w-5 h-5" />
+    },
+    { 
+      feature: "Material Quality", 
+      fast: "Cheap synthetics (polyester) that shed microplastics.", 
+      slow: "Organic cotton, hemp, linen, or recycled fibers.",
+      icon: <Leaf className="w-5 h-5" />
+    },
+    { 
+      feature: "Lifecycle", 
+      fast: "Designed to be discarded after 5-10 wears.", 
+      slow: "Designed for longevity and easy repair.",
+      icon: <Recycle className="w-5 h-5" />
+    }
+  ];
+
+  return (
+    <div className="min-h-screen bg-[#FDFCF8] text-[#2D2D2D] font-sans selection:bg-green-100">
+      {/* Navigation */}
+      <nav className="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-100 px-6 py-4 flex justify-between items-center">
+        <div className="flex items-center gap-2">
+          <div className="bg-green-600 p-1.5 rounded-lg">
+            <Leaf className="text-white w-5 h-5" />
+          </div>
+          <span className="font-bold text-xl tracking-tight uppercase">EcoStitch</span>
+        </div>
+        <div className="hidden md:flex gap-8 text-sm font-medium uppercase tracking-widest text-gray-500">
+          <a href="#problem" className="hover:text-green-600 transition-colors">The Problem</a>
+          <a href="#comparison" className="hover:text-green-600 transition-colors">Comparison</a>
+          <a href="#solutions" className="hover:text-green-600 transition-colors">Solutions</a>
+          <a href="#action" className="hover:text-green-600 transition-colors">Take Action</a>
+        </div>
+        {/* "Join the Movement" button removed per user request */}
+      </nav>
+
+      {/* Hero Section */}
+      <header className="relative py-20 px-6 max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center">
+        <div className="space-y-6">
+          <span className="inline-block bg-green-100 text-green-700 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-widest">
+            Special Report: Sustainability
+          </span>
+          <h1 className="text-5xl md:text-7xl font-serif font-medium leading-tight text-gray-900">
+            The True Cost of a <span className="italic text-green-700">Bargain.</span>
+          </h1>
+          <p className="text-lg text-gray-600 leading-relaxed max-w-lg">
+            We’ve all seen the red "70% OFF" signs. But while your wallet saves, the planet pays. Discover why it’s time to trade fast trends for a slow future.
+          </p>
+          <div className="flex gap-4">
+            <button className="bg-green-700 text-white px-8 py-4 rounded-xl font-bold hover:shadow-lg transition-all">
+              Read the Full Story
+            </button>
+          </div>
+        </div>
+        <div className="relative">
+          <div className="aspect-[4/5] bg-gray-200 rounded-3xl overflow-hidden shadow-2xl">
+            <div className="absolute inset-0 grid grid-cols-2">
+              <div className="bg-red-50 p-8 flex flex-col justify-end">
+                <span className="text-6xl font-black text-red-200 mb-4 opacity-50 uppercase -rotate-12">70% OFF</span>
+                <p className="text-xs uppercase font-bold text-red-800 tracking-tighter">Fast Fashion Waste</p>
+              </div>
+              <div className="bg-green-50 p-8 flex flex-col justify-end border-l border-white/50">
+                <Leaf className="w-12 h-12 text-green-600 mb-4" />
+                <p className="text-xs uppercase font-bold text-green-800 tracking-tighter">Sustainable Growth</p>
+              </div>
+            </div>
+            <img 
+              src="https://images.unsplash.com/photo-1558769132-cb1aea458c5e?auto=format&fit=crop&q=80&w=800" 
+              alt="Fashion piles" 
+              className="absolute inset-0 w-full h-full object-cover mix-blend-multiply opacity-40"
+            />
+          </div>
+          <div className="absolute -bottom-6 -left-6 bg-white p-6 rounded-2xl shadow-xl max-w-[200px] border border-gray-100">
+            <Droplets className="text-blue-500 mb-2" />
+            <p className="text-2xl font-bold text-gray-900">2,700 L</p>
+            <p className="text-xs text-gray-500 uppercase font-semibold">Water used for 1 T-Shirt</p>
+          </div>
+        </div>
+      </header>
+
+      {/* Facts Grid */}
+      <section id="problem" className="bg-white py-24 px-6 border-y border-gray-100">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl font-serif mb-4">The Impact in Numbers</h2>
+            <div className="h-1 w-20 bg-green-600 mx-auto"></div>
+          </div>
+          
+          <div className="grid md:grid-cols-3 gap-8">
+            <div className="p-8 bg-[#F8F9FA] rounded-3xl border border-gray-50 text-center group hover:bg-white hover:shadow-xl transition-all">
+              <div className="w-16 h-16 bg-red-100 text-red-600 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform">
+                <Trash2 className="w-8 h-8" />
+              </div>
+              <h3 className="text-4xl font-bold mb-2">85%</h3>
+              <p className="text-gray-500 font-medium italic">Of all textiles go to the dump each year.</p>
+            </div>
+            
+            <div className="p-8 bg-[#F8F9FA] rounded-3xl border border-gray-50 text-center group hover:bg-white hover:shadow-xl transition-all">
+              <div className="w-16 h-16 bg-blue-100 text-blue-600 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform">
+                <Globe className="w-8 h-8" />
+              </div>
+              <h3 className="text-4xl font-bold mb-2">10%</h3>
+              <p className="text-gray-500 font-medium italic">Of global carbon emissions come from fashion.</p>
+            </div>
+
+            <div className="p-8 bg-[#F8F9FA] rounded-3xl border border-gray-50 text-center group hover:bg-white hover:shadow-xl transition-all">
+              <div className="w-16 h-16 bg-green-100 text-green-600 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform">
+                <ShoppingBag className="w-8 h-8" />
+              </div>
+              <h3 className="text-4xl font-bold mb-2">1 Garbage Truck</h3>
+              <p className="text-gray-500 font-medium italic">Burned or dumped every single second.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Comparison Mindmap / Table */}
+      <section id="comparison" className="py-24 px-6 max-w-7xl mx-auto">
+        <div className="grid md:grid-cols-2 gap-16 items-center">
+          <div>
+            <h2 className="text-4xl font-serif mb-6 leading-tight">The Fast vs. Slow <br /><span className="text-green-700 underline decoration-2 underline-offset-8">Mindmap</span></h2>
+            <p className="text-gray-600 mb-8 leading-relaxed">
+              Sustainable fashion isn't just a trend—it's a fundamental shift in ethics, production, and mindset. See how they stack up side-by-side.
+            </p>
+            <div className="space-y-4">
+              {comparisonData.map((item, idx) => (
+                <div key={idx} className="flex gap-4 items-start p-4 rounded-xl hover:bg-white transition-colors">
+                  <div className="mt-1 p-2 bg-green-50 text-green-600 rounded-lg">
+                    {item.icon}
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-gray-900">{item.feature}</h4>
+                    <p className="text-sm text-gray-500 mt-1">
+                      <span className="text-red-500 font-semibold">Fast:</span> {item.fast}
+                    </p>
+                    <p className="text-sm text-gray-800 font-medium">
+                      <span className="text-green-600 font-semibold">Slow:</span> {item.slow}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+          <div className="bg-green-700 rounded-[3rem] p-12 text-white relative overflow-hidden group">
+            <div className="relative z-10">
+              <h3 className="text-3xl font-serif mb-4 italic text-green-100">"Buying less is the ultimate fashion statement."</h3>
+              <div className="h-0.5 w-12 bg-white/30 mb-8"></div>
+              <ul className="space-y-6">
+                <li className="flex gap-4">
+                  <div className="w-6 h-6 rounded-full bg-white/10 flex items-center justify-center text-xs">1</div>
+                  <p className="text-green-50">It takes 2,700 liters of water for one tee.</p>
+                </li>
+                <li className="flex gap-4">
+                  <div className="w-6 h-6 rounded-full bg-white/10 flex items-center justify-center text-xs">2</div>
+                  <p className="text-green-50">Microplastics from synthetics are choking our oceans.</p>
+                </li>
+                <li className="flex gap-4">
+                  <div className="w-6 h-6 rounded-full bg-white/10 flex items-center justify-center text-xs">3</div>
+                  <p className="text-green-50">Garment workers deserve living wages and safe roofs.</p>
+                </li>
+              </ul>
+            </div>
+            <div className="absolute top-0 right-0 -mr-20 -mt-20 w-64 h-64 bg-green-600 rounded-full mix-blend-screen filter blur-3xl opacity-50 group-hover:scale-110 transition-transform duration-700"></div>
+            <div className="absolute bottom-0 left-0 -ml-20 -mb-20 w-64 h-64 bg-green-800 rounded-full mix-blend-multiply filter blur-3xl opacity-50"></div>
+          </div>
+        </div>
+      </section>
+
+      {/* Interactive Solutions Section */}
+      <section id="solutions" className="bg-[#1A1A1A] py-24 px-6 text-white overflow-hidden">
+        <div className="max-w-7xl mx-auto">
+          <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
+            <div className="max-w-2xl">
+              <h2 className="text-4xl md:text-5xl font-serif mb-6 italic">The Industry Revolution</h2>
+              <p className="text-gray-400 leading-relaxed">
+                Change is already happening. From lab-grown leather to the resale boom, the fashion world is being rebuilt from the threads up.
+              </p>
+            </div>
+            <div className="flex gap-2">
+              <button className="p-3 border border-white/20 rounded-full hover:bg-white hover:text-black transition-all">
+                <ChevronLeft />
+              </button>
+              <button className="p-3 border border-white/20 rounded-full hover:bg-white hover:text-black transition-all">
+                <ChevronRight />
+              </button>
+            </div>
+          </div>
+
+          <div className="grid md:grid-cols-4 gap-6">
+            <SolutionCard 
+              title="Mushroom Leather" 
+              tag="Bio-Material"
+              desc="Mycelium-based leather is biodegradable, durable, and animal-free."
+            />
+            <SolutionCard 
+              title="Rental Economy" 
+              tag="Business Model"
+              desc="Why own when you can rent? Reducing production by 40%."
+            />
+            <SolutionCard 
+              title="Circular Tech" 
+              tag="Recycling"
+              desc="New tech allows us to turn old polyester back into virgin-quality fibers."
+            />
+            <SolutionCard 
+              title="Thrift Booming" 
+              tag="Consumer Shift"
+              desc="Second-hand is expected to double the size of fast fashion by 2030."
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* Call to Action */}
+      <section id="action" className="py-24 px-6 bg-white relative">
+        <div className="max-w-4xl mx-auto text-center">
+          <h2 className="text-5xl font-serif mb-8 text-gray-900 leading-tight">Ready to switch <br /><span className="text-green-700">your thread?</span></h2>
+          <p className="text-xl text-gray-500 mb-12">
+            Every purchase is a vote. Start voting for the planet today with three simple steps.
+          </p>
+          
+          <div className="grid md:grid-cols-3 gap-8 text-left">
+            <div className="space-y-4 p-6 bg-gray-50 rounded-2xl hover:bg-green-50 transition-colors">
+              <div className="flex items-center gap-2 font-bold text-green-700">
+                <CheckCircle2 className="w-5 h-5" /> 01. Quality Over Quantity
+              </div>
+              <p className="text-sm text-gray-600">Buy items designed to last years, not weeks. Invest in "capsule" pieces.</p>
+            </div>
+            <div className="space-y-4 p-6 bg-gray-50 rounded-2xl hover:bg-green-50 transition-colors">
+              <div className="flex items-center gap-2 font-bold text-green-700">
+                <CheckCircle2 className="w-5 h-5" /> 02. Learn To Repair
+              </div>
+              <p className="text-sm text-gray-600">Mending a button or a small tear can save a garment from the landfill for years.</p>
+            </div>
+            <div className="space-y-4 p-6 bg-gray-50 rounded-2xl hover:bg-green-50 transition-colors">
+              <div className="flex items-center gap-2 font-bold text-green-700">
+                <CheckCircle2 className="w-5 h-5" /> 03. Thrift & Resell
+              </div>
+              <p className="text-sm text-gray-600">Give clothes a second life. Thrifting is the most ethical way to shop.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Simplified Footer */}
+      <footer className="bg-white border-t border-gray-100 py-12 px-6">
+        <div className="max-w-7xl mx-auto flex justify-center">
+          <div className="flex items-center gap-2">
+            <div className="bg-green-600 p-1.5 rounded-lg">
+              <Leaf className="text-white w-5 h-5" />
+            </div>
+            <span className="font-bold text-xl tracking-tight uppercase italic">EcoStitch</span>
+          </div>
+        </div>
+      </footer>
+    </div>
+  );
+};
+
+const SolutionCard = ({ title, tag, desc }) => (
+  <div className="bg-white/5 border border-white/10 p-8 rounded-3xl hover:bg-white/10 transition-all hover:-translate-y-2 group cursor-default">
+    <span className="inline-block px-3 py-1 bg-green-900/40 text-green-400 text-[10px] font-bold uppercase tracking-widest rounded-full mb-6">
+      {tag}
+    </span>
+    <h4 className="text-2xl font-serif mb-4 group-hover:text-green-400 transition-colors">{title}</h4>
+    <p className="text-gray-400 text-sm leading-relaxed">
+      {desc}
+    </p>
+  </div>
+);
+
+export default App;
